@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobConnect Ghana - Casual Work Opportunities</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ====== GLOBAL STYLES ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Ghana Flag Colors */
+        :root {
+            --gh-red: #CE1126;
+            --gh-yellow: #FCD116;
+            --gh-green: #006B3F;
+            --gh-black: #000000;
+        }
+
+        /* ====== HEADER & NAVIGATION ====== */
+        header {
+            background: linear-gradient(135deg, var(--gh-red) 0%, var(--gh-yellow) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--gh-green);
+            color: white;
+            border: 2px solid var(--gh-green);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-primary:hover {
+            background-color: #004d00;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--gh-red);
+        }
+
+        /* ====== MAIN CONTENT ====== */
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            min-height: 70vh;
+        }
+
+        /* ====== HERO SECTION ====== */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(0, 107, 63, 0.9), rgba(0, 107, 63, 0.8));
+            background-size: cover;
+            border-radius: 10px;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* ====== FEATURES SECTION ====== */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--gh-yellow);
+            margin-bottom: 20px;
+        }
+
+        /* ====== JOB LISTINGS ====== */
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .job-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .job-title {
+            color: var(--gh-green);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .job-company {
+            color: var(--gh-red);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .job-location, .job-salary {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0;
+            color: #666;
+        }
+
+        /* ====== COMPANY IMAGES SECTION ====== */
+        .company-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .company-image-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .company-image-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .company-img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin: 0 auto 15px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border: 2px solid #eee;
+        }
+
+        /* ====== FORMS ====== */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* ====== PAGE SECTIONS ====== */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ====== FOOTER ====== */
+        footer {
+            background-color: var(--gh-black);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--gh-yellow);
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--gh-yellow);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #444;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--gh-yellow);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+
+        /* ====== RESPONSIVE DESIGN ====== */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .job-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .company-images {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .company-images {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                gap: 10px;
+            }
+            
+            .hero {
+                padding: 40px 15px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ====== UTILITY CLASSES ====== */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+        
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+        
+        .mt-30 {
+            margin-top: 30px;
+        }
+        
+        .mt-50 {
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .info-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-hands-helping"></i>
+                <span>JobConnect Ghana</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('jobs')">Job Listings</a></li>
+                    <li><a href="#" onclick="showPage('companies')">Companies</a></li>
+                    <li><a href="#" onclick="showPage('how-it-works')">How It Works</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content - All Pages in One -->
+    <main>
+        <!-- ====== HOME PAGE ====== -->
+        <div id="home" class="page-section active">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Find Casual Work Opportunities in Ghana</h1>
+                    <p>Connecting young workers with companies across Accra, Kumasi, Takoradi, and beyond</p>
+                    <div class="search-box">
+                        <input type="text" id="homeJobSearch" placeholder="Search jobs (e.g., delivery, retail, warehouse...)">
+                        <input type="text" id="homeLocation" placeholder="Location (e.g., Accra, Kumasi)">
+                        <button class="btn btn-primary" onclick="searchJobs()">Search Jobs</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="feature-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Daily & Weekly Jobs</h3>
+                    <p>Find flexible work that fits your schedule</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Local Opportunities</h3>
+                    <p>Work near your location across Ghana</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Verified Companies</h3>
+                    <p>All employers are thoroughly vetted</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Quick Payment</h3>
+                    <p>Get paid promptly after completing work</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Featured Job Opportunities</h2>
+                <div class="job-grid" id="featuredJobs">
+                    <!-- Featured jobs loaded by JavaScript -->
+                </div>
+                <div class="text-center mt-30">
+                    <button class="btn btn-primary" onclick="showPage('jobs')">View All Jobs</button>
+                </div>
+            </section>
+
+            <section class="mt-50">
+                <h2 class="text-center mb-30">Top Companies Hiring Now</h2>
+                <div class="company-images">
+                    <div class="company-image-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Melcom_Logo.png/320px-Melcom_Logo.png" 
+                             alt="Melcom Ghana" class="company-img">
+                        <h3>Melcom</h3>
+                        <p>Retail & Sales Jobs</p>
+                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> Nationwide</p>
+                        <button class="btn btn-primary" style="margin-top: 10px;" onclick="showPage('jobs')">View Jobs</button>
+                    </div>
+                    
+                    <div class="company-image-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Jumia_logo_2018.png/320px-Jumia_logo_2018.png" 
+                             alt="Jumia Ghana" class="company-img">
+                        <h3>Jumia Ghana</h3>
+                        <p>Delivery & Logistics</p>
+                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> Accra, Kumasi</p>
+                        <button class="btn btn-primary" style="margin-top: 10px;" onclick="showPage('jobs')">View Jobs</button>
+                    </div>
+                    
+                    <div class="company-image-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Kasapreko_Logo.png/320px-Kasapreko_Logo.png" 
+                             alt="Kasapreko" class="company-img">
+                        <h3>Kasapreko</h3>
+                        <p>Manufacturing Jobs</p>
+                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> Tema, Accra</p>
+                        <button class="btn btn-primary" style="margin-top: 10px;" onclick="showPage('jobs')">View Jobs</button>
+                    </div>
+                    
+                    <div class="company-image-card">
+                        <img src="https://franklincakes.com/wp-content/uploads/2017/01/frankies-logo.png" 
+                             alt="Frankies" class="company-img">
+                        <h3>Frankies</h3>
+                        <p>Food & Hospitality</p>
+                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> Accra, Kumasi</p>
+                        <button class="btn btn-primary" style="margin-top: 10px;" onclick="showPage('jobs')">View Jobs</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ====== JOB LISTINGS PAGE ====== -->
+        <div id="jobs" class="page-section">
+            <h1>Available Casual Jobs</h1>
+            <p class="mb-30">Browse through casual work opportunities from verified companies in Ghana</p>
+            
+            <div class="search-box mb-30">
+                <input type="text" id="jobSearch" placeholder="Search by job title, company, or keywords">
+                <select id="locationFilter">
+                    <option value="">All Locations</option>
+                    <option value="Accra">Accra</option>
+                    <option value="Kumasi">Kumasi</option>
+                    <option value="Takoradi">Takoradi</option>
+                    <option value="Tamale">Tamale</option>
+                    <option value="Tema">Tema</option>
+                </select>
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="retail">Retail</option>
+                    <option value="delivery">Delivery</option>
+                    <option value="hospitality">Hospitality</option>
+                    <option value="warehouse">Warehouse</option>
+                    <option value="events">Events</option>
+                </select>
+                <button class="btn btn-primary" onclick="filterJobs()">Filter Jobs</button>
+            </div>
+
+            <div class="job-grid" id="jobListings">
+                <!-- Jobs loaded by JavaScript -->
+            </div>
+            
+            <div class="info-box mt-30">
+                <h3><i class="fas fa-info-circle" style="color: var(--gh-green);"></i> How to Apply</h3>
+                <p>To apply for any job:</p>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li>Click "Apply Now" on the job you're interested in</li>
+                    <li>Note down the company name and job title</li>
+                    <li>Contact the company directly using their official contact information</li>
+                    <li>Mention you found the job on JobConnect Ghana</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- ====== COMPANIES PAGE ====== -->
+        <div id="companies" class="page-section">
+            <h1>Partner Companies in Ghana</h1>
+            <p class="mb-30">These companies regularly hire casual workers through our platform</p>
+            
+            <div class="company-images">
+                <div class="company-image-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Melcom_Logo.png/320px-Melcom_Logo.png" 
+                         alt="Melcom Ghana" class="company-img">
+                    <h3>Melcom</h3>
+                    <p><strong>Industry:</strong> Retail</p>
+                    <p><strong>Locations:</strong> Nationwide</p>
+                    <p><strong>Common Jobs:</strong> Sales Assistant, Cashier, Stock Clerk</p>
+                    <button class="btn btn-primary" style="margin-top: 10px;" onclick="filterJobsByCompany('Melcom')">View Melcom Jobs</button>
+                </div>
+                
+                <div class="company-image-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Jumia_logo_2018.png/320px-Jumia_logo_2018.png" 
+                         alt="Jumia Ghana" class="company-img">
+                    <h3>Jumia Ghana</h3>
+                    <p><strong>Industry:</strong> E-commerce & Delivery</p>
+                    <p><strong>Locations:</strong> Accra, Kumasi, Tema</p>
+                    <p><strong>Common Jobs:</strong> Delivery Driver, Warehouse Assistant, Packer</p>
+                    <button class="btn btn-primary" style="margin-top: 10px;" onclick="filterJobsByCompany('Jumia Ghana')">View Jumia Jobs</button>
+                </div>
+                
+                <div class="company-image-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Kasapreko_Logo.png/320px-Kasapreko_Logo.png" 
+                         alt="Kasapreko" class="company-img">
+                    <h3>Kasapreko</h3>
+                    <p><strong>Industry:</strong> Manufacturing</p>
+                    <p><strong>Locations:</strong> Tema, Accra</p>
+                    <p><strong>Common Jobs:</strong> Production Assistant, Packer, Quality Checker</p>
+                    <button class="btn btn-primary" style="margin-top: 10px;" onclick="filterJobsByCompany('Kasapreko')">View Kasapreko Jobs</button>
+                </div>
+                
+                <div class="company-image-card">
+                    <img src="https://franklincakes.com/wp-content/uploads/2017/01/frankies-logo.png" 
+                         alt="Frankies" class="company-img">
+                    <h3>Frankies</h3>
+                    <p><strong>Industry:</strong> Food & Hospitality</p>
+                    <p><strong>Locations:</strong> Accra, Kumasi, Takoradi</p>
+                    <p><strong>Common Jobs:</strong> Server, Kitchen Assistant, Cleaner</p>
+                    <button class="btn btn-primary" style="margin-top: 10px;" onclick="filterJobsByCompany('Frankies')">View Frankies Jobs</button>
+                </div>
+                
+                <div class="company-image-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/MTN_Logo.svg/320px-MTN_Logo.svg.png" 
+                         alt="MTN Ghana" class="company-img">
+                    <h3>MTN Ghana</h3>
+                    <p><strong>Industry:</strong> Telecommunications</p>
+                    <p><strong>Locations:</strong> Nationwide</p>
+                    <p><strong>Common Jobs:</strong> Sales Promoter, Event Staff, Customer Service</p>
+                    <button class="btn btn-primary" style="margin-top: 10px;" onclick="filterJobsByCompany('MTN Ghana')">View MTN Jobs</button>
+                </div>
+                
+                <div class="company-image-card">
+                    <img src="https://www.shoprite.com.gh/Content/images/shoprite-logo.png" 
+                         alt="ShopRite Ghana" class="company-img">
+                    <h3>ShopRite Ghana</h3>
+                    <p><strong>Industry:</strong> Retail & Supermarket</p>
+                    <p><strong>Locations:</strong> Accra, Kumasi, Takoradi</p>
+                    <p><strong>Common Jobs:</strong> Cashier, Stock Clerk, Customer Service</p>
+                    <button class="btn btn-primary" style="margin-top: 10px;" onclick="filterJobsByCompany('ShopRite Ghana')">View ShopRite Jobs</button>
+                </div>
+            </div>
+            
+            <div class="info-box mt-30">
+                <h3><i class="fas fa-building" style="color: var(--gh-green);"></i> For Employers</h3>
+                <p>Are you a company looking to hire casual workers?</p>
+                <p>Contact us to get listed on our platform:</p>
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i>
+                    <span>Employer Hotline: +233 24 123 4568</span>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email: employers@jobconnectgh.com</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== HOW IT WORKS PAGE ====== -->
+        <div id="how-it-works" class="page-section">
+            <h1>How JobConnect Ghana Works</h1>
+            <p class="text-center mb-30">A simple platform connecting workers with employers</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div style="font-size: 2.5rem; font-weight: bold; color: var(--gh-yellow); margin-bottom: 15px;">1</div>
+                    <h3>Find Jobs</h3>
+                    <div style="text-align: left; margin-top: 20px;">
+                        <h4><i class="fas fa-search" style="color: var(--gh-green);"></i> Browse Opportunities</h4>
+                        <p>Search for casual jobs by location, category, or schedule that fits you.</p>
+                        
+                        <h4><i class="fas fa-filter" style="color: var(--gh-green);"></i> Filter & Compare</h4>
+                        <p>Use our filters to find jobs that match your skills and availability.</p>
+                        
+                        <h4><i class="fas fa-info-circle" style="color: var(--gh-green);"></i> View Details</h4>
+                        <p>See complete job descriptions, requirements, and pay rates.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div style="font-size: 2.5rem; font-weight: bold; color: var(--gh-yellow); margin-bottom: 15px;">2</div>
+                    <h3>Apply Directly</h3>
+                    <div style="text-align: left; margin-top: 20px;">
+                        <h4><i class="fas fa-phone" style="color: var(--gh-green);"></i> Contact Company</h4>
+                        <p>Reach out to the hiring company using their contact information.</p>
+                        
+                        <h4><i class="fas fa-file-alt" style="color: var(--gh-green);"></i> Prepare Your Details</h4>
+                        <p>Have your availability, skills, and contact information ready.</p>
+                        
+                        <h4><i class="fas fa-handshake" style="color: var(--gh-green);"></i> Get Hired</h4>
+                        <p>Complete the company's application process and start working.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div style="font-size: 2.5rem; font-weight: bold; color: var(--gh-yellow); margin-bottom: 15px;">3</div>
+                    <h3>Work & Earn</h3>
+                    <div style="text-align: left; margin-top: 20px;">
+                        <h4><i class="fas fa-briefcase" style="color: var(--gh-green);"></i> Start Working</h4>
+                        <p>Begin your casual work assignment as scheduled.</p>
+                        
+                        <h4><i class="fas fa-money-bill-wave" style="color: var(--gh-green);"></i> Get Paid</h4>
+                        <p>Receive payment according to the agreed terms with the employer.</p>
+                        
+                        <h4><i class="fas fa-sync-alt" style="color: var(--gh-green);"></i> Find More Work</h4>
+                        <p>Return to our platform to find your next opportunity.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <section class="mt-50" style="background: #f8f9fa; padding: 40px; border-radius: 10px;">
+                <h2 class="text-center mb-30">Frequently Asked Questions</h2>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="feature-card" style="text-align: left; margin-bottom: 20px;">
+                        <h4><i class="fas fa-question-circle" style="color: var(--gh-red);"></i> Is there any fee to use JobConnect Ghana?</h4>
+                        <p>No, JobConnect Ghana is completely free for job seekers. We provide job information as a public service.</p>
+                    </div>
+                    
+                    <div class="feature-card" style="text-align: left; margin-bottom: 20px;">
+                        <h4><i class="fas fa-question-circle" style="color: var(--gh-red);"></i> How do I apply for jobs?</h4>
+                        <p>When you find a job you're interested in, click "Apply Now" to see application instructions. Each company has its own application process.</p>
+                    </div>
+                    
+                    <div class="feature-card" style="text-align: left; margin-bottom: 20px;">
+                        <h4><i class="fas fa-question-circle" style="color: var(--gh-red);"></i> Are the companies verified?</h4>
+                        <p>Yes, all companies listed on our platform are legitimate businesses operating in Ghana.</p>
+                    </div>
+                    
+                    <div class="feature-card" style="text-align: left;">
+                        <h4><i class="fas fa-question-circle" style="color: var(--gh-red);"></i> What types of jobs are available?</h4>
+                        <p>We list various casual work including retail assistance, delivery drivers, event staff, warehouse workers, cleaning staff, and more.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="text-center mt-30">
+                <button class="btn btn-primary" onclick="showPage('jobs')" style="margin-right: 20px;">
+                    <i class="fas fa-search"></i> Browse Jobs
+                </button>
+                <button class="btn btn-secondary" onclick="showPage('companies')">
+                    <i class="fas fa-building"></i> View Companies
+                </button>
+            </div>
+        </div>
+
+        <!-- ====== CONTACT PAGE ====== -->
+        <div id="contact" class="page-section">
+            <h1>Contact JobConnect Ghana</h1>
+            <p class="text-center mb-30">Get in touch with us for any inquiries or support</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Our Location</h3>
+                    <p>JobConnect Ghana Headquarters</p>
+                    <p>Ring Road Central, Accra</p>
+                    <p>Ghana</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact Numbers</h3>
+                    <p>General Inquiries: +233 24 123 4567</p>
+                    <p>Employer Support: +233 24 123 4568</p>
+                    <p>Worker Support: +233 24 123 4569</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Addresses</h3>
+                    <p>General: info@jobconnectgh.com</p>
+                    <p>Employers: employers@jobconnectgh.com</p>
+                    <p>Support: support@jobconnectgh.com</p>
+                </div>
+            </div>
+            
+            <div class="info-box mt-30">
+                <h3><i class="fas fa-clock" style="color: var(--gh-green);"></i> Operating Hours</h3>
+                <div style="margin-top: 15px;">
+                    <p><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</p>
+                    <p><strong>Saturday:</strong> 9:00 AM - 2:00 PM</p>
+                    <p><strong>Sunday:</strong> Closed</p>
+                </div>
+            </div>
+            
+            <section class="mt-50">
+                <h2>About JobConnect Ghana</h2>
+                <div class="feature-card" style="text-align: left;">
+                    <p>JobConnect Ghana is a platform dedicated to connecting young Ghanaian workers with casual employment opportunities across various industries. We bridge the gap between employers who need flexible workforce and young people seeking temporary or part-time work.</p>
+                    
+                    <h4 style="margin-top: 20px; color: var(--gh-green);">Our Mission</h4>
+                    <p>To reduce youth unemployment in Ghana by creating accessible pathways to flexible work opportunities while helping businesses find reliable temporary staff.</p>
+                    
+                    <h4 style="margin-top: 20px; color: var(--gh-green);">Our Vision</h4>
+                    <p>To become Ghana's leading platform for casual employment, empowering thousands of young people with income opportunities and work experience.</p>
+                    
+                    <h4 style="margin-top: 20px; color: var(--gh-green);">Our Values</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Accessibility:</strong> Free service for all job seekers</li>
+                        <li><strong>Transparency:</strong> Clear job details and requirements</li>
+                        <li><strong>Reliability:</strong> Verified companies and legitimate opportunities</li>
+                        <li><strong>Community:</strong> Supporting Ghana's youth employment</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>JobConnect Ghana</h3>
+                <p>Connecting young Ghanaians with flexible work opportunities across the country.</p>
+                <div class="social-icons">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('jobs')">Job Listings</a></li>
+                    <li><a href="#" onclick="showPage('companies')">Companies</a></li>
+                    <li><a href="#" onclick="showPage('how-it-works')">How It Works</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Accra, Ghana</li>
+                    <li><i class="fas fa-phone"></i> +233 24 123 4567</li>
+                    <li><i class="fas fa-envelope"></i> info@jobconnectgh.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 8AM-6PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 JobConnect Ghana. All rights reserved. | Frontend website for informational purposes</p>
+        </div>
+    </footer>
+
+    <script>
+        // ====== JOB DATA ======
+        const jobs = [
+            {
+                id: 1,
+                title: "Delivery Driver",
+                company: "Jumia Ghana",
+                location: "Accra",
+                salary: "GHC 50-70/day",
+                type: "daily",
+                category: "delivery",
+                description: "Deliver packages to customers across Accra. Motorcycle license required. Contact: delivery@jumiagh.com or call 0302-123456.",
+                date: "2024-06-15",
+                contact: "delivery@jumiagh.com | 0302-123456"
+            },
+            {
+                id: 2,
+                title: "Retail Assistant",
+                company: "Melcom",
+                location: "Kumasi",
+                salary: "GHC 40-60/day",
+                type: "weekly",
+                category: "retail",
+                description: "Assist customers, manage inventory at retail store. No experience required. Contact: hr@melcom.com or visit any Melcom branch.",
+                date: "2024-06-14",
+                contact: "hr@melcom.com | Visit any branch"
+            },
+            {
+                id: 3,
+                title: "Warehouse Packer",
+                company: "Kasapreko",
+                location: "Tema",
+                salary: "GHC 45/day",
+                type: "daily",
+                category: "warehouse",
+                description: "Pack products in warehouse. Physical stamina required. Contact: jobs@kasapreko.com or call 0303-987654.",
+                date: "2024-06-13",
+                contact: "jobs@kasapreko.com | 0303-987654"
+            },
+            {
+                id: 4,
+                title: "Food Service Staff",
+                company: "Frankies",
+                location: "Accra",
+                salary: "GHC 35-50/day",
+                type: "flexible",
+                category: "hospitality",
+                description: "Serve food and beverages at restaurant. Customer service skills needed. Apply at any Frankies location.",
+                date: "2024-06-12",
+                contact: "Apply at any Frankies location"
+            },
+            {
+                id: 5,
+                title: "Event Assistant",
+                company: "EventPro Ghana",
+                location: "Accra",
+                salary: "GHC 60-80/day",
+                type: "weekend",
+                category: "events",
+                description: "Assist with event setup and guest services. Weekend work only. Contact: events@eventprogh.com",
+                date: "2024-06-11",
+                contact: "events@eventprogh.com | 024-1122334"
+            },
+            {
+                id: 6,
+                title: "Sales Promoter",
+                company: "MTN Ghana",
+                location: "Takoradi",
+                salary: "GHC 55/day + commission",
+                type: "weekly",
+                category: "retail",
+                description: "Promote mobile products and services. Good communication skills required. Contact: promotions@mtn.com.gh",
+                date: "2024-06-10",
+                contact: "promotions@mtn.com.gh"
+            },
+            {
+                id: 7,
+                title: "Cleaner",
+                company: "CleanRight Services",
+                location: "Tamale",
+                salary: "GHC 40/day",
+                type: "daily",
+                category: "cleaning",
+                description: "Office cleaning services. Early morning shifts. Contact: info@cleanrightgh.com",
+                date: "2024-06-09",
+                contact: "info@cleanrightgh.com | 0372-445566"
+            },
+            {
+                id: 8,
+                title: "Stock Assistant",
+                company: "ShopRite Ghana",
+                location: "Accra",
+                salary: "GHC 45-55/day",
+                type: "flexible",
+                category: "warehouse",
+                description: "Manage stock and inventory in supermarket. Contact HR at any ShopRite store.",
+                date: "2024-06-08",
+                contact: "Apply at ShopRite HR office"
+            }
+        ];
+
+        // ====== PAGE NAVIGATION ======
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update navigation style
+            document.querySelectorAll('nav a').forEach(link => {
+                link.style.backgroundColor = '';
+                link.style.fontWeight = '';
+            });
+            
+            // Update URL hash
+            window.location.hash = pageId;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Load content if needed
+            if (pageId === 'home') {
+                loadFeaturedJobs();
+            } else if (pageId === 'jobs') {
+                loadAllJobs();
+            }
+        }
+
+        // ====== JOB FUNCTIONS ======
+        function displayJobs(jobList, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (jobList.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                        <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 20px;"></i>
+                        <h3>No jobs found</h3>
+                        <p>Try different search terms or filters</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            jobList.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card';
+                jobCard.innerHTML = `
+                    <h3 class="job-title">${job.title}</h3>
+                    <p class="job-company">${job.company}</p>
+                    <p class="job-location"><i class="fas fa-map-marker-alt"></i> ${job.location}</p>
+                    <p class="job-salary"><i class="fas fa-money-bill-wave"></i> ${job.salary}</p>
+                    <p><i class="fas fa-calendar-alt"></i> Posted: ${job.date}</p>
+                    <p><i class="fas fa-tag"></i> ${job.category.charAt(0).toUpperCase() + job.category.slice(1)}</p>
+                    <div style="margin: 15px 0; color: #666; padding: 10px; background: #f9f9f9; border-radius: 5px;">
+                        <strong>Job Description:</strong><br>${job.description}
+                    </div>
+                    <div style="margin: 15px 0; padding: 10px; background: #e8f5e8; border-radius: 5px; border-left: 4px solid var(--gh-green);">
+                        <strong><i class="fas fa-phone-alt"></i> How to Apply:</strong><br>
+                        ${job.contact}
+                    </div>
+                    <button class="btn btn-primary" onclick="applyForJob(${job.id})">
+                        <i class="fas fa-paper-plane"></i> Apply Now
+                    </button>
+                `;
+                container.appendChild(jobCard);
+            });
+        }
+
+        function filterJobs() {
+            const searchTerm = document.getElementById('jobSearch')?.value.toLowerCase() || '';
+            const location = document.getElementById('locationFilter')?.value || '';
+            const category = document.getElementById('categoryFilter')?.value || '';
+            
+            const filteredJobs = jobs.filter(job => {
+                const matchesSearch = job.title.toLowerCase().includes(searchTerm) || 
+                                    job.company.toLowerCase().includes(searchTerm) ||
+                                    job.description.toLowerCase().includes(searchTerm);
+                const matchesLocation = !location || job.location === location;
+                const matchesCategory = !category || job.category === category;
+                
+                return matchesSearch && matchesLocation && matchesCategory;
+            });
+            
+            displayJobs(filteredJobs, 'jobListings');
+        }
+
+        function filterJobsByCompany(companyName) {
+            showPage('jobs');
+            document.getElementById('jobSearch').value = companyName;
+            filterJobs();
+        }
+
+        function searchJobs() {
+            const searchTerm = document.getElementById('homeJobSearch')?.value.toLowerCase() || '';
+            const location = document.getElementById('homeLocation')?.value || '';
+            
+            if (!searchTerm && !location) {
+                showPage('jobs');
+                return;
+            }
+            
+            const filteredJobs = jobs.filter(job => {
+                const matchesSearch = !searchTerm || 
+                                    job.title.toLowerCase().includes(searchTerm) || 
+                                    job.company.toLowerCase().includes(searchTerm);
+                const matchesLocation = !location || job.location === location;
+                
+                return matchesSearch && matchesLocation;
+            });
+            
+            if (filteredJobs.length > 0) {
+                showPage('jobs');
+                // Set filter values
+                if (location) {
+                    document.getElementById('locationFilter').value = location;
+                }
+                if (searchTerm) {
+                    document.getElementById('jobSearch').value = searchTerm;
+                }
+                displayJobs(filteredJobs, 'jobListings');
+            } else {
+                showPage('jobs');
+                displayJobs([], 'jobListings');
+            }
+        }
+
+        function loadFeaturedJobs() {
+            const featuredJobs = jobs.slice(0, 4);
+            displayJobs(featuredJobs, 'featuredJobs');
+        }
+
+        function loadAllJobs() {
+            displayJobs(jobs, 'jobListings');
+        }
+
+        function applyForJob(jobId) {
+            const job = jobs.find(j => j.id === jobId);
+            if (job) {
+                alert(`Job Application Instructions:\n\nPosition: ${job.title}\nCompany: ${job.company}\n\nContact Information:\n${job.contact}\n\nApply directly using the contact information above.\n\nGood luck with your application!`);
+            }
+        }
+
+        // ====== INITIALIZATION ======
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for hash in URL
+            const hash = window.location.hash.substring(1);
+            if (hash && ['home', 'jobs', 'companies', 'how-it-works', 'contact'].includes(hash)) {
+                showPage(hash);
+            } else {
+                loadFeaturedJobs();
+            }
+            
+            // Highlight current page in navigation
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(l => {
+                        l.style.backgroundColor = '';
+                        l.style.fontWeight = '';
+                    });
+                    this.style.backgroundColor = 'rgba(255,255,255,0.2)';
+                    this.style.fontWeight = 'bold';
+                });
+            });
+            
+            // Make search boxes work with Enter key
+            const searchInputs = document.querySelectorAll('input[type="text"]');
+            searchInputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        if (this.id === 'homeJobSearch' || this.id === 'homeLocation') {
+                            searchJobs();
+                        } else if (this.id === 'jobSearch') {
+                            filterJobs();
+                        }
+                    }
+                });
+            });
+        });
+
+        // ====== INSTRUCTIONS FOR ADDING LOCAL IMAGES ======
+        /*
+        To add your own company logo images:
+        
+        1. Save your images in the same folder as this HTML file
+        2. Replace the image URLs in the code with your filenames
+        
+        Example for Melcom logo:
+        Change: src="https://upload.wikimedia.org/.../Melcom_Logo.png"
+        To: src="melcom-logo.jpg"
+        
+        Recommended:
+        - Image format: JPG or PNG
+        - Size: 120x120 pixels or larger
+        - Name files clearly: melcom.jpg, jumia.png, etc.
+        
+        For best results, use square images with transparent backgrounds.
+        */
+    </script>
+</body>
+</html>
